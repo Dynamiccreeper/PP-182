@@ -59,15 +59,13 @@ export default class Main extends Component {
         </View>
         <View style={styles.middleContainer}>
           <Camera
-            style={{ flex: 1 }}
-            type={Camera.Constants.Type.front}
-            faceDetectorSettings={{
-              mode: FaceDetector.Constants.Mode.fast,
-              detectLandmarks: FaceDetector.Constants.Landmarks.all,
-              runClassifications: FaceDetector.Constants.Classifications.all
-            }}
-            onFacesDetected={this.onFacesDetected}
-            onFacesDetectionError={this.onFacesDetectionError}
+    onFacesDetected={handleFacesDetected}
+    faceDetectorSettings={{
+      mode: FaceDetector.FaceDetectorMode.fast,
+      detectLandmarks: FaceDetector.FaceDetectorLandmarks.none,
+      runClassifications: FaceDetector.FaceDetectorClassifications.none,
+      minDetectionInterval: 100,
+      tracking: true,
           />
           {this.state.faces.map(face => (
             <Filter1 key={`face-id-${face.faceID}`} face={face} />
